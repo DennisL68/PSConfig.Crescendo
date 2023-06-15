@@ -1,0 +1,211 @@
+﻿{
+  "$schema": "https://aka.ms/PowerShell/Crescendo/Schemas/2022-06",
+  "Commands": [
+    {
+      "Verb": "Invoke",
+      "Noun": "PSConfigProductUpgrade",
+      "OriginalName": "psconfig.exe",
+      "OriginalCommandElements": [
+        "-cmd", "upgrade"
+      ],
+      "Description":  "Upgrade SharePoint Products using 
+
+c:\\> psconfig -cmd upgrade 
+
+and a selection of additional parameters.",
+      "Platform": ["Windows"],
+      "Elevation": null,
+      "DefaultParameterSetName": "default",
+      "Usage": null,
+      "Parameters": [
+        {
+          "Name":           "Inplace",
+          "OriginalName":   "-inplace",
+          "ParameterType":  "string",
+          "Description":    "Perfoms an in-place upgrade (which means?).
+          
+v2v as a value will perform an in-place upgrade version to version.
+b2b as a value will perform an in-place upgrade build to build. "
+        },
+        {
+          "Name":           "Wait",
+          "OriginalName":   "-wait",
+          "ParameterType":  "switch",
+          "Description":    "If not used, a Timer Job will be used in the background to perform the upgrade."
+        },
+        {
+          "Name":           "Force",
+          "OriginalName":   "-force",
+          "ParameterType":  "switch",
+          "Description":    "Stops any currently running upgrade actions and the restarts the upgrade."
+        },
+        {
+          "Name":           "ResetContentDefinition",
+          "OriginalName":   "-reghostonupgrade",
+          "ParameterType":  "switch",
+          "Description":    "Reset all content to the site definition version (what ever that means)."
+        },
+        {
+          "Name":           "KeepUserExperience",
+          "OriginalName":   "-preserveoldusereexperience",
+          "ParameterType":  "switch",
+          "Description":    "Will keep the upgrade from upgrading to any new user experience available."
+        },
+        {
+          "Name":           "SetPassphrase",
+          "OriginalName":   "-passphrase",
+          "ParameterType":  "switch",
+          "Description":    "Sets(?) the passphrase used to join the server farm. Must be the same on all servers."
+        }
+      ],
+      "Examples": [],
+      "OriginalText": null,
+      "HelpLinks": null,
+      "OutputHandlers": [
+        {
+            "ParameterSetName": "default",
+            "HandlerType": "Function",
+            "Handler": "Invoke-ParseError"
+        }
+      ]
+    },
+    {
+      "Verb": "Invoke",
+      "Noun": "PSConfigInstallApplicationContent",
+      "OriginalName": "psconfig.exe",
+      "OriginalCommandElements": [
+        "-cmd", "applicationcontent", "-install"
+      ],
+      "Description":  "Copies shared application data to existing Web applications using
+
+c:\\> psconfig -cmd applicationcontent -install",
+      "Platform": ["Windows"],
+      "Elevation": null,
+      "DefaultParameterSetName": "default",
+      "Usage": null,
+      "Parameters": null,
+      "Examples": [],
+      "OriginalText": null,
+      "HelpLinks": null,
+      "OutputHandlers": [
+        {
+            "ParameterSetName": "default",
+            "HandlerType": "Function",
+            "Handler": "Invoke-ParseError"
+        }
+      ]
+    },
+    {
+      "Verb": "Invoke",
+      "Noun": "PSConfigRegisterFeatures",
+      "OriginalName": "psconfig.exe",
+      "OriginalCommandElements": [
+        "-cmd", "installfeatures"
+      ],
+      "Description":  "Registers any SharePoint Products and Technologies features on this server with the 
+server farm using
+
+c:\\> psconfig -cmd installfeatures",
+      "Platform": ["Windows"],
+      "Elevation": null,
+      "DefaultParameterSetName": "default",
+      "Usage": null,
+      "Parameters": null,
+      "Examples": [],
+      "OriginalText": null,
+      "HelpLinks": null,
+      "OutputHandlers": [
+        {
+            "ParameterSetName": "default",
+            "HandlerType": "Function",
+            "Handler": "Invoke-ParseError"
+        }
+      ]
+    },
+    {
+      "Verb": "Invoke",
+      "Noun": "PSConfigSecureResourceFiles",
+      "OriginalName": "psconfig.exe",
+      "OriginalCommandElements": [
+        "-cmd", "secureresources"
+      ],
+      "Description":  "Perform SharePoint file and registry key security enforcement using
+
+c:\\> psconfig -cmd secureresources",
+      "Platform": ["Windows"],
+      "Elevation": null,
+      "DefaultParameterSetName": "default",
+      "Usage": null,
+      "Parameters": null,
+      "Examples": [],
+      "OriginalText": null,
+      "HelpLinks": null,
+      "OutputHandlers": [
+        {
+            "ParameterSetName": "default",
+            "HandlerType": "Function",
+            "Handler": "Invoke-ParseError"
+        }
+      ]
+    },
+    {
+      "Verb": "Invoke",
+      "Noun": "PSConfigRegisterServices",
+      "OriginalName": "psconfig.exe",
+      "OriginalCommandElements": [
+        "-cmd", "services","-install"
+      ],
+      "Description":  "Registers the local SharePoint services with the farm using
+
+c:\\> psconfig -cmd services -install",
+      "Platform": ["Windows"],
+      "Elevation": null,
+      "DefaultParameterSetName": "default",
+      "Usage": null,
+      "Parameters": null,
+      "Examples": [],
+      "OriginalText": null,
+      "HelpLinks": null,
+      "OutputHandlers": [
+        {
+            "ParameterSetName": "default",
+            "HandlerType": "Function",
+            "Handler": "Invoke-ParseError"
+        }
+      ]
+    },
+    {
+      "Verb": "Invoke",
+      "Noun": "PSConfigSafeProductUpgrade",
+      "OriginalName": "psconfig.exe",
+      "OriginalCommandElements": [
+        "-cmd", "upgrade", "-inplace", "b2b", "-wait", "-force",
+        "-cmd", "applicationcontent", "-install",
+        "-cmd", "installfeatures",
+        "-cmd", "secureresources",
+        "-cmd", "services", "-install"
+      ],
+      "Description":  "Applies all commands recommended to use after patching SharePoint using
+
+c:\\> psconfig -cmd upgrade -inplace b2b -wait -force -cmd applicationcontent -install
+-cmd installfeatures -cmd secureresources -cmd services -install",
+      "Platform": ["Windows"],
+      "Elevation": null,
+      "DefaultParameterSetName": "default",
+      "Usage": null,
+      "Parameters": null,
+      "Examples": [],
+      "OriginalText": null,
+      "HelpLinks": null,
+      "OutputHandlers": [
+        {
+            "ParameterSetName": "default",
+            "HandlerType": "Function",
+            "Handler": "Invoke-ParseError"
+        }
+      ]
+
+    }
+
+  ]
+}

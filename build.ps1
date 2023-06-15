@@ -27,7 +27,10 @@ foreach ($Module in $Modules) {
 New-Item $Output -ItemType Directory
 New-Item $obj -ItemType Directory
 
-. .\src\*.ps1
+if (-not (Get-Item function:Invoke-ParseError)) {
+    throw 'Missing functions'
+}
+
 <# 
 $Commands = Get-ChildItem "$PSScriptRoot\src\*.json" | foreach { 
     $Definition = Get-Content $_.FullName | ConvertFrom-Json | Select -ExpandProperty Commands
@@ -78,7 +81,7 @@ Export-CrescendoModule -ConfigurationFile (Get-ChildItem "$obj\*.json") -ModuleN
     Company         = '-'
     Copyright       = 'Dennis Lindqvist'
     Description     = 'PowerShell cmdlets for SharePoint PSConfig tool wrapped with MS Crescendo.'
-    LicenseUri      = 'https://github.com/DennisL68/PSConfig.Crescendo/blob/main/LICENSEE'
+    LicenseUri      = 'https://github.com/DennisL68/PSConfig.Crescendo/blob/main/LICENSE'
     ProjectUri      = 'https://github.com/DennisL68/PSConfig.Crescendo'
     Tags            = @('SharePoint','PSConfig','CrescendoBuilt','SharePoint-On-Prem','SharePoint-Product-Configuration-Wizard')
     #A URL to an icon representing this module.

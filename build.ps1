@@ -20,7 +20,7 @@ foreach ($Module in $Modules) {
         -ErrorAction SilentlyContinue
 
     if (-not $ModuleExist) {
-        Install-Module $Module.Name -RequiredVersion $Mdoule.Version -AllowPrerelease -Force -Scope CurrentUser
+        Install-Module $Module.Name -RequiredVersion $Module.Version -AllowPrerelease -Force -Scope CurrentUser
     }
 }
 
@@ -31,8 +31,8 @@ if (-not (Get-Item function:Invoke-ParseError)) {
     throw 'Missing functions'
 }
 
-<# 
-$Commands = Get-ChildItem "$PSScriptRoot\src\*.json" | foreach { 
+<#
+$Commands = Get-ChildItem "$PSScriptRoot\src\*.json" | foreach {
     $Definition = Get-Content $_.FullName | ConvertFrom-Json | Select -ExpandProperty Commands
     $Command = New-CrescendoCommand -Verb $Definition.Verb -Noun $Definition.Noun -OriginalName $Definition.OriginalName
     $Command.OriginalCommandElements = $Definition.OriginalCommandElements
@@ -40,7 +40,7 @@ $Commands = Get-ChildItem "$PSScriptRoot\src\*.json" | foreach {
 
     if ($Definition.Parameters) {
         $Command.Parameters = $Definition.Parameters | ForEach-Object {
-            $Parameter = New-ParameterInfo -Name $_.Name -OriginalName $_.OriginalName 
+            $Parameter = New-ParameterInfo -Name $_.Name -OriginalName $_.OriginalName
             $Parameter.OriginalName = $_.OriginalName
             $Parameter.OriginalPosition = $_.OriginalPosition
             $Parameter.ParameterType = $_.ParameterType
@@ -50,7 +50,7 @@ $Commands = Get-ChildItem "$PSScriptRoot\src\*.json" | foreach {
 
     if ($Definition.OutputHandlers) {
         $Command.OutputHandlers = $Definition.OutputHandlers | ForEach-Object {
-            $Handler = New-OutputHandler 
+            $Handler = New-OutputHandler
             $Handler.ParameterSetName = $_.ParameterSetName
             $Handler.Handler = $_.Handler
             $Handler.HandlerType = $_.HandlerType
@@ -59,7 +59,7 @@ $Commands = Get-ChildItem "$PSScriptRoot\src\*.json" | foreach {
         }
     }
 
-    $Command 
+    $Command
 }
 
 @{
@@ -67,13 +67,13 @@ $Commands = Get-ChildItem "$PSScriptRoot\src\*.json" | foreach {
     Commands  = $Commands
 } | ConvertTo-Json -Depth 5 | Out-File "$obj\Commands.json"
 
-Export-CrescendoModule -ConfigurationFile (Get-ChildItem "$obj\*.json") -ModuleName (Join-Path $Output 'PSConfig.Crescendo') -Force 
+Export-CrescendoModule -ConfigurationFile (Get-ChildItem "$obj\*.json") -ModuleName (Join-Path $Output 'PSConfig.Crescendo') -Force
  #>
 
  Export-CrescendoModule `
     -ConfigurationFile $PSScriptRoot\src\PSConfig.Crescendo.json `
     -ModuleName (Join-Path $Output 'PSConfig.Crescendo') `
-    -Force 
+    -Force
 
  $ManifestInfo = @{
     ModuleVersion   = $Version
@@ -87,10 +87,10 @@ Export-CrescendoModule -ConfigurationFile (Get-ChildItem "$obj\*.json") -ModuleN
     #A URL to an icon representing this module.
     #IconUri = ''
     #ReleaseNotes of this module
-    #ReleaseNotes = '' 
+    #ReleaseNotes = ''
 }
 
-Update-ModuleManifest -Path (Join-Path $Output 'PSConfig.Crescendo.psd1') @ManifestInfo 
+Update-ModuleManifest -Path (Join-Path $Output 'PSConfig.Crescendo.psd1') @ManifestInfo
 
 Invoke-ScriptAnalyzer "$PSScriptRoot\output\PSConfig.Crescendo.psd1" -ExcludeRule PSAvoidTrailingWhitespace
 

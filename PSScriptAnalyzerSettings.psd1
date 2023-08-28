@@ -3,7 +3,7 @@
 @{
     'Rules' = @{
         'PSAvoidUsingCmdletAliases' = @{
-            'allowlist' = @('foreach','select','where')
+            'allowlist' = @('foreach','select','where','group','compare','sort','sleep')
         }
     }
 }

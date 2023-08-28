@@ -5,7 +5,7 @@ A PowerShell wrapper for SharePoint Products Configuration Wizard, psconfig, cre
 
 * Clone the repo to your local system
 
-* Dot Source the parse script the build  
+* Dot Source the output script to be able to build  
 `. .\src\Invoke-ParseConfig.ps1`
 
 * Run the build script

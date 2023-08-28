@@ -20,7 +20,7 @@ foreach ($Module in $Modules) {
         -ErrorAction SilentlyContinue
 
     if (-not $ModuleExist) {
-        Install-Module $Module.Name -RequiredVersion $Mdoule.Version -AllowPrerelease -Force -Scope CurrentUser
+        Install-Module $Module.Name -RequiredVersion $Module.Version -AllowPrerelease -Force -Scope CurrentUser
     }
 }
 

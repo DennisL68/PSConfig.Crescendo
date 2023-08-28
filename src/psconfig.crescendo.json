@@ -25,7 +25,7 @@ and a selection of additional parameters.",
           "Description":    "Perfoms an in-place upgrade (which means?).
           
 v2v as a value will perform an in-place upgrade version to version.
-b2b as a value will perform an in-place upgrade build to build. "
+b2b as a value will perform an in-place upgrade build to build."
         },
         {
           "Name":           "Wait",

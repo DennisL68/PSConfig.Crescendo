@@ -27,7 +27,8 @@ Install-SPService                         # Install and provision required servi
 ## How to build the module
 
 * Clone the repo to your local system
-* Dot Source the output script to be able to build`. .\src\Invoke-ParseConfig.ps1`
+* Dot Source the output script to be able to build  
+  `. .\src\Invoke-ParseConfig.ps1`
 * Run the build script
 
 ## Requirements
